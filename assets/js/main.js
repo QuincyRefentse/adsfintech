@@ -1,237 +1,322 @@
-/**
- * ADS FINTECH - Coming Soon Page
- * Countdown Timer & Interactive Elements
- */
-
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 ADS Fintech - Coming Soon Page Loaded');
-    
-    // Set launch date (14 days from now)
-    setLaunchDate();
-    
-    // Initialize countdown
-    initCountdown();
-    
-    // Add smooth scroll
-    initSmoothScroll();
-    
-    // Add hover effects for contact cards
-    initContactCards();
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
 });
 
-/**
- * Set Launch Date - 14 days from current date
- * This can be adjusted based on actual launch schedule
- */
-function setLaunchDate() {
-    // Get current date
-    const now = new Date();
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const backToTop = document.getElementById('backToTop');
     
-    // Set launch to 14 days from now (adjust as needed)
-    const launchDate = new Date(now);
-    launchDate.setDate(now.getDate() + 14);
-    
-    // Store in global variable
-    window.launchDate = launchDate;
-    
-    console.log(`📅 Launch Date: ${launchDate.toLocaleDateString()}`);
-}
-
-/**
- * Initialize Countdown Timer
- */
-function initCountdown() {
-    const countdownElement = document.getElementById('countdown');
-    const daysElement = document.getElementById('days');
-    const hoursElement = document.getElementById('hours');
-    const minutesElement = document.getElementById('minutes');
-    const secondsElement = document.getElementById('seconds');
-    
-    // Remove loading state
-    if (countdownElement) {
-        countdownElement.classList.remove('loading');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
     
-    // Update countdown every second
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const launch = window.launchDate.getTime();
-        const distance = launch - now;
+    // Back to top button
+    if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+// Mobile menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+}
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Active navigation link on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Counter animation
+const counters = document.querySelectorAll('.stat-number');
+const speed = 200;
+
+const startCounting = (counter) => {
+    const updateCount = () => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const count = parseInt(counter.innerText);
         
-        // Time calculations
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        // Update DOM with leading zeros
-        if (daysElement) daysElement.textContent = String(days).padStart(2, '0');
-        if (hoursElement) hoursElement.textContent = String(hours).padStart(2, '0');
-        if (minutesElement) minutesElement.textContent = String(minutes).padStart(2, '0');
-        if (secondsElement) secondsElement.textContent = String(seconds).padStart(2, '0');
-        
-        // If countdown is finished
-        if (distance < 0) {
-            clearInterval(countdownInterval);
-            if (daysElement) daysElement.textContent = '00';
-            if (hoursElement) hoursElement.textContent = '00';
-            if (minutesElement) minutesElement.textContent = '00';
-            if (secondsElement) secondsElement.textContent = '00';
-            
-            // Show launch message
-            const messageBox = document.querySelector('.message-box');
-            if (messageBox) {
-                messageBox.innerHTML = '<p class="message">🎉 We are now live! Check back for the new platform.</p>';
-            }
+        if (count < target) {
+            const increment = Math.ceil(target / speed);
+            counter.innerText = count + increment;
+            setTimeout(updateCount, 1);
+        } else {
+            counter.innerText = target + '+';
+        }
+    };
+    
+    updateCount();
+};
+
+// Trigger counter animation when about section is visible
+const aboutSection = document.querySelector('#about');
+let counted = false;
+
+window.addEventListener('scroll', () => {
+    if (aboutSection && !counted) {
+        const sectionTop = aboutSection.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight - 100) {
+            counters.forEach(counter => startCounting(counter));
+            counted = true;
         }
     }
-    
-    // Initial call
-    updateCountdown();
-    
-    // Update every second
-    const countdownInterval = setInterval(updateCountdown, 1000);
-}
-
-/**
- * Smooth Scroll for anchor links
- */
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-/**
- * Contact Cards Hover Effects
- */
-function initContactCards() {
-    const cards = document.querySelectorAll('.contact-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // Optional: Add sound or analytics tracking
-            console.log('Contact card hovered:', this.querySelector('.contact-link')?.textContent);
-        });
-    });
-}
-
-/**
- * Copy to clipboard functionality (optional enhancement)
- */
-function setupCopyButtons() {
-    const contactLinks = document.querySelectorAll('.contact-link');
-    
-    contactLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Only for email links, not phone
-            if (this.href && this.href.startsWith('mailto:')) {
-                e.preventDefault();
-                const email = this.href.replace('mailto:', '');
-                
-                // Copy to clipboard
-                navigator.clipboard.writeText(email).then(() => {
-                    // Show temporary tooltip
-                    const tooltip = document.createElement('span');
-                    tooltip.textContent = 'Email copied!';
-                    tooltip.style.cssText = `
-                        position: absolute;
-                        background: var(--accent-gold);
-                        color: var(--primary-dark);
-                        padding: 4px 8px;
-                        border-radius: 4px;
-                        font-size: 12px;
-                        top: -20px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        white-space: nowrap;
-                    `;
-                    
-                    this.style.position = 'relative';
-                    this.appendChild(tooltip);
-                    
-                    setTimeout(() => {
-                        tooltip.remove();
-                    }, 2000);
-                });
-            }
-        });
-    });
-}
-
-/**
- * Add dynamic background effect
- */
-function initBackgroundEffect() {
-    const body = document.body;
-    
-    body.addEventListener('mousemove', function(e) {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        
-        // Subtle parallax effect on gradient
-        body.style.backgroundPosition = `${x * 20}px ${y * 20}px`;
-    });
-}
-
-/**
- * Handle form submissions if any
- */
-function handleFormSubmissions() {
-    // Placeholder for future newsletter signup
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Form submission - coming soon!');
-        });
-    });
-}
-
-/**
- * Performance monitoring
- */
-function logPerformance() {
-    const perfData = window.performance.timing;
-    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-    console.log(`📊 Page load time: ${pageLoadTime}ms`);
-}
-
-/**
- * Initialize all features
- */
-function initAll() {
-    logPerformance();
-    
-    // Optional features (uncomment if needed)
-    // setupCopyButtons();
-    // initBackgroundEffect();
-    // handleFormSubmissions();
-}
-
-// Call initialization
-initAll();
-
-// Handle visibility change (pause timer when tab not active)
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        console.log('⏸️ Countdown paused - tab inactive');
-    } else {
-        console.log('▶️ Countdown resumed - tab active');
-    }
 });
 
-// Export for testing (if needed)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { initCountdown, setLaunchDate };
+// Testimonials slider
+const testimonials = document.querySelectorAll('.testimonial-card');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.slider-prev');
+const nextBtn = document.querySelector('.slider-next');
+let currentSlide = 0;
+
+const showSlide = (index) => {
+    testimonials.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    testimonials[index].classList.add('active');
+    dots[index].classList.add('active');
+};
+
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+        currentSlide--;
+        if (currentSlide < 0) {
+            currentSlide = testimonials.length - 1;
+        }
+        showSlide(currentSlide);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        currentSlide++;
+        if (currentSlide >= testimonials.length) {
+            currentSlide = 0;
+        }
+        showSlide(currentSlide);
+    });
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
 }
+
+// Auto slide testimonials
+setInterval(() => {
+    if (testimonials.length > 0) {
+        currentSlide++;
+        if (currentSlide >= testimonials.length) {
+            currentSlide = 0;
+        }
+        showSlide(currentSlide);
+    }
+}, 5000);
+
+// Form submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Show success message
+        alert('Thank you for your message! We will get back to you within 24 hours.');
+        
+        // Reset form
+        this.reset();
+    });
+}
+
+// Newsletter form
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        if (email) {
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        }
+    });
+}
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Particles.js configuration
+if (document.getElementById('particles-js')) {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#8B7355'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.5,
+                random: false,
+                anim: {
+                    enable: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#8B7355',
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 1
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    });
+}
+
+// Scroll reveal animation
+const revealElements = document.querySelectorAll('.service-card, .feature-item, .about-content, .contact-wrapper, .resonance-card, .timeline-item');
+
+const revealOnScroll = () => {
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+};
+
+// Set initial styles for animation
+revealElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'all 0.6s ease';
+});
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);

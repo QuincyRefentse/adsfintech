@@ -3,104 +3,532 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADS Fintech · Coming Soon</title>
-    
-    <!-- Fonts -->
+    <title>African Development Scheme (Pty) Ltd | Generational Resonance</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Logo Section -->
-        <div class="logo-container">
-            <img src="assets/images/logo.png" alt="ADS Fintech Logo" class="logo" onerror="this.src='https://via.placeholder.com/200x80/1a2a3a/ffffff?text=ADS+FINTECH'">
-        </div>
-
-        <!-- Countdown Headline -->
-        <h1 class="headline">
-            <span class="headline-main">ADS FINTECH PLATFORM LAUNCH</span>
-            <span class="headline-sub">COUNTDOWN</span>
-        </h1>
-
-        <!-- Countdown Timer -->
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
-
-        <!-- Main Message -->
-        <div class="message-box">
-            <p class="message">We are currently undergoing a scheduled revamp to serve you better. We'll go-live soon</p>
-        </div>
-
-        <!-- Contact Information -->
-        <div class="contact-section">
-            <h2 class="contact-title">Contact Us</h2>
-            
-            <div class="contact-grid">
-                <!-- Admin -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
-                    <div class="contact-label">Admin</div>
-                </div>
-
-                <!-- Email 1 -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <a href="mailto:ads2025fintech@gmail.com" class="contact-link">ads2025fintech@gmail.com</a>
-                </div>
-
-                <!-- Email 2 -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <a href="mailto:tngqalo@gmail.com" class="contact-link">tngqalo@gmail.com</a>
-                </div>
-
-                <!-- Phone -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa-regular fa-phone"></i>
-                    </div>
-                    <a href="tel:+2782658244709" class="contact-link">065 8244 709</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>&copy; 2026 ADS Fintech. All rights reserved.</p>
+    <!-- Preloader 
+    <div class="preloader">
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
+-->
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/assets/images/africandev.png" alt="African Development Scheme Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">African Development Scheme</span>
+                    <span class="logo-sub">(Pty) Ltd</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#generational">Generational</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#contact" class="btn-nav">Get Started</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-particles" id="particles-js"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle animate-text">Welcome to</span>
+            <h1 class="hero-title animate-text-delay">
+                African Development <span>Scheme</span>
+            </h1>
+            <p class="hero-description animate-text-delay2">
+                Building <span class="highlight">Generational Resonance</span> through innovative financial solutions that empower African communities for generations to come.
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Discover Our Story</a>
+                <a href="#contact" class="btn btn-outline">Partner With Us</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <i class="fas fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About Us</span>
+                <h2 class="section-title">Generational <span>Resonance</span></h2>
+                <p class="section-subtitle">Creating lasting impact that echoes through generations</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content-left">
+                    <div class="about-image-grid">
+                        <div class="image-item image-main">
+                            <img src="assets/images/innovate.jfif" alt="African Innovation">
+                        </div>
+                        <div class="image-item image-secondary">
+                            <img src="assets/images/commun.jfif" alt="Community Development">
+                        </div>
+                        <div class="image-item image-tertiary">
+                            <img src="assets/images/growth.png" alt="Financial Growth">
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content-right">
+                    <h3>Shaping Africa's Financial Future</h3>
+                    <p class="about-text">At African Development Scheme (Pty) Ltd, we believe in creating wealth that transcends generations. Our approach combines traditional African values with modern financial innovation.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Rooted in Africa</h4>
+                                <p>Deeply connected to African heritage and community values</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-children"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Future-Focused</h4>
+                                <p>Building sustainable wealth for generations to come</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Community First</h4>
+                                <p>Every investment strengthens African communities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="15">0</h3>
+                            <p>African Nations</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="50000">0</h3>
+                            <p>Lives Impacted</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="25">0</h3>
+                            <p>Years of Legacy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generational Resonance Section -->
+    <section id="generational" class="generational">
+        <div class="generational-bg">
+            <div class="container">
+                <div class="section-header light">
+                    <span class="section-tag">Our Philosophy</span>
+                    <h2 class="section-title">Generational <span>Resonance</span></h2>
+                    <p class="section-subtitle">Creating harmony between past wisdom and future innovation</p>
+                </div>
+
+                <div class="resonance-grid">
+                    <div class="resonance-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="resonance-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <h3>Planting Seeds</h3>
+                                <p>Today's investments for tomorrow's harvest</p>
+                            </div>
+                            <div class="card-back">
+                                <p>Every investment we make today is a seed planted for future generations to flourish.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resonance-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="resonance-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <h3>Growing Strong</h3>
+                                <p>Nurturing wealth across decades</p>
+                            </div>
+                            <div class="card-back">
+                                <p>Like ancient baobabs, we build financial structures that stand the test of time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resonance-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="resonance-icon">
+                                    <i class="fas fa-hands"></i>
+                                </div>
+                                <h3>Harvesting Together</h3>
+                                <p>Shared prosperity, shared future</p>
+                            </div>
+                            <div class="card-back">
+                                <p>Success is sweeter when shared across communities and generations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Financial <span>Solutions</span></h2>
+                <p class="section-subtitle">Tailored services that respect tradition while embracing innovation</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/wealth.jfif" alt="Generational Wealth">
+                        <div class="service-overlay">
+                            <h3>Generational Wealth</h3>
+                            <p>Build wealth that lasts for generations</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/comunity.jfif" alt="Community Investment">
+                        <div class="service-overlay">
+                            <h3>Community Investment</h3>
+                            <p>Invest in Africa's most valuable asset - its people</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/legacy.jfif" alt="Legacy Planning">
+                        <div class="service-overlay">
+                            <h3>Legacy Planning</h3>
+                            <p>Secure your family's future for generations</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/digital.jfif" alt="Digital Banking">
+                        <div class="service-overlay">
+                            <h3>Digital Banking</h3>
+                            <p>Modern solutions with African sensibilities</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Journey</span>
+                <h2 class="section-title">Building a <span>Legacy</span></h2>
+                <p class="section-subtitle">Twenty-five years of serving African communities</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">1999</div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Founded with a vision to transform African finance</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2005</div>
+                    <div class="timeline-content">
+                        <h3>First Expansion</h3>
+                        <p>Expanded to 5 African nations</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2012</div>
+                    <div class="timeline-content">
+                        <h3>Digital Revolution</h3>
+                        <p>Launched innovative digital banking platform</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3>Community Impact</h3>
+                        <p>Reached 50,000 families across Africa</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Generational Vision</h3>
+                        <p>Launching Generational Resonance initiative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">Voices of <span>Resonance</span></h2>
+                <p class="section-subtitle">Hear from families we've helped across generations</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>African Development Scheme helped my family build wealth that now supports my grandchildren. True generational resonance.</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-1.jpg" alt="Client">
+                            <div>
+                                <h4>Grace Mbeki</h4>
+                                <span>Client since 2005</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Their understanding of African values combined with modern banking makes them unique. My children's future is secure.</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-2.jpg" alt="Client">
+                            <div>
+                                <h4>Thabo Ndlovu</h4>
+                                <span>Client since 2010</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Three generations of my family bank with ADS. That's the trust they've built.</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-3.jpg" alt="Client">
+                            <div>
+                                <h4>Elizabeth Okafor</h4>
+                                <span>Client since 1999</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="slider-prev"><i class="fas fa-arrow-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-next"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Start Your Generational Journey</h2>
+                    <p>Join thousands of African families building lasting legacies with us</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary btn-large">Partner With Us</a>
+                        <a href="#" class="btn btn-outline-light btn-large">Download Brochure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact <span>Us</span></h2>
+                <p class="section-subtitle">Let's discuss your generational wealth goals</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p><a href="tel:0658244709">065 8244 709</a></p>
+                        <p>Mon-Fri, 8am-6pm</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:info@africandevelopmentscheme.com">info@africandevelopmentscheme.com</a></p>
+                        <p>We reply within 24hrs</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Us</h4>
+                        <p>Johannesburg, South Africa</p>
+                        <p>Sandton, 2196</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/africandev.png" alt="African Development Scheme" class="footer-logo">
+                    <p class="footer-text">Building generational resonance through innovative financial solutions rooted in African values.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#generational">Generational</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Generational Wealth</a></li>
+                        <li><a href="#">Community Investment</a></li>
+                        <li><a href="#">Legacy Planning</a></li>
+                        <li><a href="#">Digital Banking</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates on generational wealth building</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 African Development Scheme (Pty) Ltd. All rights reserved. | Generational Resonance</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
